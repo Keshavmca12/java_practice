@@ -1,0 +1,48 @@
+<input type="text" name="name" ng-model="name" />
+	<br> Age
+	<input type="text" name="age" ng-model="age" />
+	<br>
+	<button type="button" class="btn btn-primary"
+		ng-click="showdetailsOfInside()">showdetailsOfInside</button>
+	<br>
+	<button type="button" class="btn btn-primary"
+		ng-click="activateButton('basic')">Basic</button>
+	<button type="button" class="btn btn-primary"
+		ng-click="activateButton('primary')">Primary</button>
+	<button type="button" class="btn btn-primary"
+		ng-click="activateButton('')">none</button>
+	<div ng-if="activeTab=='basic'">
+		<div ng-include="'resources/views/basic.html'"></div>
+	</div>
+	<div ng-if="activeTab=='primary'">
+		changed
+	</div>
+	<div ng-if="activeTab==''">
+		<h2>please select button to show data</h2>
+		 <hr>
+
+      <!-- NOTE: TinyMCE textareas must have id's -->
+      <textarea data-ui-tinymce id="tinymce1" data-ng-model="from_one.from_one"></textarea>
+      <p ng-bind-html="from_one.from_one"></p>
+      <button type="button" class="btn btn primary" ng-click="getEditorData(from_one.from_one)">Get data</button>
+      <hr>
+	</div>
+	<div class="login-wrapper" id="SESSIONTIMEOUTDIV" style="display:none;">
+		<div class="login-widget"
+			style="margin: 0 auto; width: 45% !important; margin-top: 7%;">
+			<div class="panel panel-default">
+				<div class="panel-heading clearfix"
+					style="text-align: center; height: 300px; vertical-align: middle; padding-top: 120px;">
+					<span style="font-size: 25px;">Currently your session has
+						been expired click here to login</span>
+					<div class="row" style="margin-top: 60px;">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<button class="btn btn-md btn-primary pull-right" type="button">
+								login</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>

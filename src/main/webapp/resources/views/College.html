@@ -1,0 +1,19 @@
+<h2>College Details ::</h2>
+
+<form role="form">
+	<div class="form-group">
+		<label for="usr">Name:</label> <input type="text" class="form-control"
+			id="usr" ng-model="college.name" required>
+	</div>
+	<div class="form-group">
+		<label for="pwd">Location:</label> <input type="text"
+			class="form-control" id="pwd" ng-model="college.location" required>
+	</div>
+	<select name="university" 
+		ng-model="college.university" ng-options="data.name for data in universityList">
+		<!-- <option ng-repeat="data in universityList" id="universityOption" value="{{data.id}}">{{data.name}}</option> -->
+	</select>
+
+	<button class="btn btn-primary"
+		ng-click="submitCollegeDetails(college)">Submit</button>
+</form>

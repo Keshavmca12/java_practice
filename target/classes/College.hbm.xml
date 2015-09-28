@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.dto.College" table="COLLEGE">
+        <id name="id" type="java.lang.Integer">
+            <column name="COLLEGE_ID" />
+            <generator class="identity" />
+        </id>
+         <many-to-one name="university" class="com.dto.University" fetch="select">
+            <column name="UNIVERSITY_ID" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="NAME" length="10" not-null="true" unique="true" />
+        </property>
+        <property name="location" type="string">
+            <column name="LOCATION" length="20" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

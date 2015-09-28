@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+	<!-- <tx:annotation-driven/> -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url" value="jdbc:postgresql://localhost:5433/eOffice_ID2" />
+		<property name="username" value="postgres" />
+		<property name="password" value="postgres" />
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>University.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+			</value>
+		</property>
+	</bean>
+	
+	 <!--  <bean id="universityDaoImpl" class="com.dao.UniversityDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean> -->
+</beans>
