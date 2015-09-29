@@ -1,0 +1,16 @@
+<nav ng-if="pages.length >= 2">
+
+	<ul class="pagination">
+		<li ng-if="currentPage >= 2"><a ng-click="selectPage(1)" href="#">First</a>
+		</li>
+		<li ng-if="currentPage >= 2"><a
+			ng-click="selectPage(currentPage - 1)" href="#">&lt;</a></li>
+		<li ng-repeat="page in pages" ng-class="{active: page==currentPage}">
+			<a href="#" ng-click="selectPage(page)">{{page}}</a>
+		</li>
+		<li ng-if="currentPage<numPages"><a
+			ng-click="selectPage(currentPage + 1)" href="#">&gt;</a></li>
+		<li ng-if="currentPage<numPages"><a
+			ng-click="selectPage(numPages)" href="#">Last</a></li>
+	</ul>
+</nav>

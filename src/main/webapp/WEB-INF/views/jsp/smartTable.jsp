@@ -51,48 +51,53 @@ footer {
 	height: 40px;
 }
 </style>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+	rel="stylesheet" />
 </head>
 <body ng-controller="smartTableCtrl">
 	<header ng-if="showFormatted">Smart Table</header>
-	<div  style="overflow: auto;max-height: 100vh;" ng-if="!showFormatted">
-						<h3>Dynamic data displayed:::</h3><br>
-				<table st-table="displayedData" st-safe-src="originalData">
-					<thead>
+	<div style="overflow: auto; max-height: 100vh;" ng-if="!showFormatted">
+		<h3>Dynamic data displayed:::</h3>
+		<br>
+		<table st-table="displayedData" st-safe-src="originalData">
+			<thead>
 
-						<tr>
-							<th >id</th>
-							<th style="width:50px;" >letterNumber</th>
-							<th >referenceNumber</th>
-							<th >subject</th>
-							<th >correspondenceNumber</th>
-							<th >modeId</th>
-							<th >isVip</th>
-						</tr>
-					</thead>
-					<tr>
-						<th colspan="5"><input st-search="" class="form-control"
-							placeholder="global search ..." type="text" /></th>
-					</tr>
-					<tbody>
-						<tr ng-repeat="row in displayedData | limitTo:4500">
-							<td >{{$index+1}}</td>
-							<td style="width:50px;" >{{row.letterNumber}}</td>
-							<td >{{row.referenceNumber}}</td>
-							<td >{{row.subject}}</td>
-							<td >{{row.correspondenceNumber}}</td>
-							<td >{{row.modeId}}</td>
-							<td >{{row.isVip}}</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+				<tr>
+					<th>id</th>
+					<th style="width: 50px;">letterNumber</th>
+					<th>referenceNumber</th>
+					<th>subject</th>
+					<th>correspondenceNumber</th>
+					<th>modeId</th>
+					<th>isVip</th>
+				</tr>
+			</thead>
+			<tr>
+				<th colspan="5"><input st-search="" class="form-control"
+					placeholder="global search ..." type="text" /></th>
+			</tr>
+			<tbody>
+				<tr ng-repeat="row in displayedData | limitTo:4500">
+					<td>{{$index+1}}</td>
+					<td style="width: 50px;">{{row.letterNumber}}</td>
+					<td>{{row.referenceNumber}}</td>
+					<td>{{row.subject}}</td>
+					<td>{{row.correspondenceNumber}}</td>
+					<td>{{row.modeId}}</td>
+					<td>{{row.isVip}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
 	<div class="container-fluid body-content" ng-if="showFormatted">
-	<button ng-click="changeTableCOntent()" class="btn btn-primary">Change Content</button>
+		<button ng-click="changeTableCOntent()" class="btn btn-primary">Change
+			Content</button>
 		<div
 			style="float: left; width: 20%; border: 3px solid black; height: 700px;"></div>
-		<div style="float: right; width: 75%; overflow: auto;height: 100%;max-height: 100vh;">
+		<div
+			style="float: right; width: 75%; overflow: auto; height: 100%; max-height: 100vh;">
 			<h2>Smart table ::</h2>
 			<br>
 			<form>
@@ -101,7 +106,8 @@ footer {
 					ng-options="predicate for predicate in predicates"></select>
 			</form>
 			<div ng-if="!showDynamicData">
-			<h3>Static data displayed:::</h3><br>
+				<h3>Static data displayed:::</h3>
+				<br>
 				<table st-table="displayedCollection" st-safe-src="rowCollection">
 					<thead>
 
@@ -155,19 +161,22 @@ footer {
 					</tbody>
 				</table>
 			</div>
-			<div ng-if="showDynamicData" >
-						<h3>Dynamic data displayed:::</h3><br>
-				<table  st-safe-src="originalData" st-table="displayedData">
+			<div ng-if="showDynamicData">
+				<h3>Dynamic data displayed:::</h3>
+				<br>
+				<table st-safe-src="originalData" st-table="displayedData">
 					<thead>
 
 						<tr>
-						<!-- 	<th >id</th> -->
-							<th style="width:80px;" >letterNumber</th>
-							<th >referenceNumber</th>
-							<th style="left-margin:10px;">subject</th>
-							<th >correspondenceNumber</th>
-							<th st-sort="modeId" >modeId</th>
-							<th >isVip</th>
+							<!-- 	<th >id</th> -->
+							<th style="width: 80px;">letterNumber</th>
+							<th style="width: 60px;" st-sort="referenceNumber"><a
+								href="#"> referenceNumber</a></th>
+							<th style="width: 120px;">subject</th>
+							<th style="width: 50px;">correspondenceNumber</th>
+							<th st-sort="modeId" style="width: 10px;"><a href="#">
+									modeId</a></th>
+							<th style="width: 20px;">isVip</th>
 						</tr>
 					</thead>
 					<tr>
@@ -177,17 +186,18 @@ footer {
 					<tbody>
 						<tr ng-repeat="row in displayedData">
 							<!-- <td >{{$index+1}}</td> -->
-							<td style="width:80px;" >{{row.letterNumber}}</td>
-							<td >{{row.referenceNumber}}</td>
-							<td >{{row.subject}}</td>
-							<td >{{row.correspondenceNumber}}</td>
-							<td >{{row.modeId}}</td>
-							<td >{{row.isVip}}</td>
+							<!-- <td ng-if="$index==5"><img src="resources/img/test.png"/></td> -->
+							<td style="width: 80px;">{{row.letterNumber}}</td>
+							<td>{{row.referenceNumber}}</td>
+							<td>{{row.subject}}</td>
+							<td>{{row.correspondenceNumber}}</td>
+							<td>{{row.modeId}}</td>
+							<td>{{row.isVip}}</td>
 						</tr>
 					</tbody>
 					<td colspan="5" class="text-center">
-						<div st-pagination="" st-items-by-page="8"
-							st-displayed-pages="10"></div>
+						<div st-items-by-page="8" st-pagination="4"
+							st-template="resources/views/pagination.html"></div>
 					</td>
 				</table>
 			</div>
@@ -200,8 +210,7 @@ footer {
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-	<script
-		src="resources/lib/smart-table.js"></script>
+	<script src="resources/lib/smart-table.js"></script>
 
 	<script type="text/javascript" src="resources/js/smartTable.js"></script>
 

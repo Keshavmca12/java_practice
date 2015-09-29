@@ -25,7 +25,7 @@ public class FlCorrespondenceRecieptService {
 			c =correspondenceRecieptRepo.getConnection();
 
 			stmt = c.createStatement();
-			String sql = "select * from fl_correspondence_receipt as fl limit 95000;";
+			String sql = "select * from fl_correspondence_receipt as fl limit 100;";
 			System.out.println("query ::" +sql);
 			ResultSet rs=stmt.executeQuery(sql);
 			while (rs.next()) {
