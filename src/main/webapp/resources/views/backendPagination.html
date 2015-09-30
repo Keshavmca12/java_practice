@@ -1,0 +1,42 @@
+<div ng-controller="backendPaginationCtrl">
+	<table class="table" st-pipe="callServer" st-table="displayed">
+		<thead>
+			<tr>
+					<th>id</th>
+					<th style="width: 50px;">letterNumber</th>
+					<th>referenceNumber</th>
+					<th>subject</th>
+					<th>correspondenceNumber</th>
+					<th>modeId</th>
+					<th>isVip</th>
+				</tr>
+			<!-- <tr>
+				<th><input st-search="id" /></th>
+				<th><input st-search="letterNumber" /></th>
+				<th><input st-search="referenceNumber" /></th>
+				<th><input st-search="modeId" /></th>
+			</tr> -->
+		</thead>
+		<tbody ng-show="!isLoading">
+			<tr ng-repeat="row in displayed">
+				<td style="width: 50px;">{{row.letterNumber}}</td>
+					<td>{{row.referenceNumber}}</td>
+					<td>{{row.subject}}</td>
+					<td>{{row.correspondenceNumber}}</td>
+					<td>{{row.modeId}}</td>
+					<td>{{row.isVip}}</td>
+			</tr>
+		</tbody>
+		<tbody ng-show="isLoading">
+			<tr>
+				<td colspan="4" class="text-center">Loading ...</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td class="text-center" st-pagination="" st-items-by-page="8"
+					colspan="4"  st-template="resources/views/pagination.html"></td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
