@@ -92,117 +92,126 @@ footer {
 	</div>
 
 	<div class="container-fluid body-content" ng-if="showFormatted">
-		<button ng-click="changeTableCOntent()" class="btn btn-primary">Change
-			Content</button>
-		<div
-			style="float: left; width: 20%; border: 3px solid black; height: 700px;"></div>
-		<div
-			style="float: right; width: 75%; overflow: auto; height: 100%; max-height: 100vh;">
-			<h2>Smart table ::</h2>
-			<br>
-			<form>
-				<label for="predicate">selected predicate:</label> <select
-					class="form-control" id="predicate" ng-model="selectedPredicate"
-					ng-options="predicate for predicate in predicates"></select>
-			</form>
-			<div ng-if="!showDynamicData">
-				<h3>Static data displayed:::</h3>
+		<button ng-click="changeToBackendPagination()" class="btn btn-primary"
+			ng-if="!backendPagination">Backend pagination</button>
+		<button ng-click="changeToBackendPagination()" class="btn btn-primary"
+			ng-if="backendPagination">Frontend pagination</button>
+		<!-- <div ng-if="backendPagination"
+			ng-include="'resources/views/backendPagination.html'"></div> -->
+			<div ng-include="backendPagination ? 'resources/views/backendPagination.html' : null"></div>
+		<button ng-click="changeTableCOntent()" class="btn btn-primary"
+			ng-if="!backendPagination">Change Content</button>
+		<div ng-if="!backendPagination">
+			<div
+				style="float: left; width: 20%; border: 3px solid black; height: 700px;"></div>
+			<div
+				style="float: right; width: 75%; overflow: auto; height: 100%; max-height: 100vh;">
+				<h2>Smart table ::</h2>
 				<br>
-				<table st-table="displayedCollection" st-safe-src="rowCollection">
-					<thead>
+				<form>
+					<label for="predicate">selected predicate:</label> <select
+						class="form-control" id="predicate" ng-model="selectedPredicate"
+						ng-options="predicate for predicate in predicates"></select>
+				</form>
+				<div ng-if="!showDynamicData">
+					<h3>Static data displayed:::</h3>
+					<br>
+					<table st-table="displayedCollection" st-safe-src="rowCollection">
+						<thead>
 
+							<tr>
+								<th ng-style="mystyle={width: firstNameLength};">first name</th>
+								<th ng-style="mystyle={width: lastNameLength};">last name</th>
+								<th ng-right-click="showAction(rowCollection)">birth date</th>
+								<th ng-style="mystyle={width: balanceLength};">balance</th>
+								<th ng-style="mystyle={width: emailLength};">email</th>
+								<th ng-style="mystyle={width: firstNameLength};">first name</th>
+								<th ng-style="mystyle={width: lastNameLength};">last name</th>
+								<th>birth date</th>
+								<th ng-style="mystyle={width: balanceLength};">balance</th>
+								<th ng-style="mystyle={width: emailLength};">email</th>
+								<th ng-style="mystyle={width: firstNameLength};">first name</th>
+								<th ng-style="mystyle={width: lastNameLength};">last name</th>
+								<th>birth date</th>
+								<th ng-style="mystyle={width: balanceLength};">balance</th>
+								<th ng-style="mystyle={width: emailLength};">email</th>
+							</tr>
+						</thead>
 						<tr>
-							<th ng-style="mystyle={width: firstNameLength};">first name</th>
-							<th ng-style="mystyle={width: lastNameLength};">last name</th>
-							<th ng-right-click="showAction(rowCollection)">birth date</th>
-							<th ng-style="mystyle={width: balanceLength};">balance</th>
-							<th ng-style="mystyle={width: emailLength};">email</th>
-							<th ng-style="mystyle={width: firstNameLength};">first name</th>
-							<th ng-style="mystyle={width: lastNameLength};">last name</th>
-							<th>birth date</th>
-							<th ng-style="mystyle={width: balanceLength};">balance</th>
-							<th ng-style="mystyle={width: emailLength};">email</th>
-							<th ng-style="mystyle={width: firstNameLength};">first name</th>
-							<th ng-style="mystyle={width: lastNameLength};">last name</th>
-							<th>birth date</th>
-							<th ng-style="mystyle={width: balanceLength};">balance</th>
-							<th ng-style="mystyle={width: emailLength};">email</th>
+							<th colspan="5"><input st-search="" class="form-control"
+								placeholder="global search ..." type="text" /></th>
+							<th><input st-search="{{selectedPredicate}}"
+								placeholder="search {{selectedPredicate}}"
+								class="input-sm form-control" type="search" /></th>
+
 						</tr>
-					</thead>
-					<tr>
-						<th colspan="5"><input st-search="" class="form-control"
-							placeholder="global search ..." type="text" /></th>
-						<th><input st-search="{{selectedPredicate}}"
-							placeholder="search {{selectedPredicate}}"
-							class="input-sm form-control" type="search" /></th>
+						<tbody>
+							<tr ng-repeat="row in displayedCollection">
 
-					</tr>
-					<tbody>
-						<tr ng-repeat="row in displayedCollection">
+								<td ng-style="mystyle={width: firstNameLength};"
+									ng-right-click="showAction(row)">{{row.firstName}}</td>
+								<td ng-style="mystyle={width: lastNameLength};"
+									ng-right-click="showAction(row)">{{row.lastName}}</td>
+								<td>{{row.birthDate}}</td>
+								<td ng-style="mystyle={width: balanceLength};">{{row.balance}}</td>
+								<td ng-style="mystyle={width: emailLength};">{{row.email}}</td>
+								<td ng-style="mystyle={width: firstNameLength};">{{row.firstName}}</td>
+								<td ng-style="mystyle={width: lastNameLength};">{{row.lastName}}</td>
+								<td>{{row.birthDate}}</td>
+								<td ng-style="mystyle={width: balanceLength};">{{row.balance}}</td>
+								<td ng-style="mystyle={width: emailLength};">{{row.email}}</td>
+								<td ng-style="mystyle={width: firstNameLength};">{{row.firstName}}</td>
+								<td ng-style="mystyle={width: lastNameLength};">{{row.lastName}}</td>
+								<td>{{row.birthDate}}</td>
+								<td ng-style="mystyle={width: balanceLength};">{{row.balance}}</td>
+								<td ng-style="mystyle={width: emailLength};">{{row.email}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div ng-if="showDynamicData">
+					<h3>Dynamic data displayed:::</h3>
+					<br>
+					<table st-safe-src="originalData" st-table="displayedData">
+						<thead>
 
-							<td ng-style="mystyle={width: firstNameLength};"
-								ng-right-click="showAction(row)">{{row.firstName}}</td>
-							<td ng-style="mystyle={width: lastNameLength};"
-								ng-right-click="showAction(row)">{{row.lastName}}</td>
-							<td>{{row.birthDate}}</td>
-							<td ng-style="mystyle={width: balanceLength};">{{row.balance}}</td>
-							<td ng-style="mystyle={width: emailLength};">{{row.email}}</td>
-							<td ng-style="mystyle={width: firstNameLength};">{{row.firstName}}</td>
-							<td ng-style="mystyle={width: lastNameLength};">{{row.lastName}}</td>
-							<td>{{row.birthDate}}</td>
-							<td ng-style="mystyle={width: balanceLength};">{{row.balance}}</td>
-							<td ng-style="mystyle={width: emailLength};">{{row.email}}</td>
-							<td ng-style="mystyle={width: firstNameLength};">{{row.firstName}}</td>
-							<td ng-style="mystyle={width: lastNameLength};">{{row.lastName}}</td>
-							<td>{{row.birthDate}}</td>
-							<td ng-style="mystyle={width: balanceLength};">{{row.balance}}</td>
-							<td ng-style="mystyle={width: emailLength};">{{row.email}}</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div ng-if="showDynamicData">
-				<h3>Dynamic data displayed:::</h3>
-				<br>
-				<table st-safe-src="originalData" st-table="displayedData">
-					<thead>
-
+							<tr>
+								<!-- 	<th >id</th> -->
+								<th style="width: 80px;">letterNumber</th>
+								<th style="width: 60px;" st-sort="referenceNumber"><a
+									href="#"> referenceNumber</a></th>
+								<th style="width: 120px;">subject</th>
+								<th style="width: 50px;">correspondenceNumber</th>
+								<th st-sort="modeId" style="width: 10px;"><a href="#">
+										modeId</a></th>
+								<th style="width: 20px;">isVip</th>
+							</tr>
+						</thead>
 						<tr>
-							<!-- 	<th >id</th> -->
-							<th style="width: 80px;">letterNumber</th>
-							<th style="width: 60px;" st-sort="referenceNumber"><a
-								href="#"> referenceNumber</a></th>
-							<th style="width: 120px;">subject</th>
-							<th style="width: 50px;">correspondenceNumber</th>
-							<th st-sort="modeId" style="width: 10px;"><a href="#">
-									modeId</a></th>
-							<th style="width: 20px;">isVip</th>
+							<th colspan="5"><input st-search="" class="form-control"
+								placeholder="global search ..." type="text" /></th>
 						</tr>
-					</thead>
-					<tr>
-						<th colspan="5"><input st-search="" class="form-control"
-							placeholder="global search ..." type="text" /></th>
-					</tr>
-					<tbody>
-						<tr ng-repeat="row in displayedData">
-							<!-- <td >{{$index+1}}</td> -->
-							<!-- <td ng-if="$index==5"><img src="resources/img/test.png"/></td> -->
-							<td style="width: 80px;">{{row.letterNumber}}</td>
-							<td>{{row.referenceNumber}}</td>
-							<td>{{row.subject}}</td>
-							<td>{{row.correspondenceNumber}}</td>
-							<td>{{row.modeId}}</td>
-							<td>{{row.isVip}}</td>
-						</tr>
-					</tbody>
-					<td colspan="5" class="text-center">
-						<div st-items-by-page="8" st-pagination="4"
-							st-template="resources/views/pagination.html"></div>
-					</td>
-				</table>
+						<tbody>
+							<tr ng-repeat="row in displayedData">
+								<!-- <td >{{$index+1}}</td> -->
+								<!-- <td ng-if="$index==5"><img src="resources/img/test.png"/></td> -->
+								<td style="width: 80px;">{{row.letterNumber}}</td>
+								<td>{{row.referenceNumber}}</td>
+								<td>{{row.subject}}</td>
+								<td>{{row.correspondenceNumber}}</td>
+								<td>{{row.modeId}}</td>
+								<td>{{row.isVip}}</td>
+							</tr>
+						</tbody>
+						<td colspan="5" class="text-center">
+							<div st-items-by-page="8" st-pagination="4"
+								st-template="resources/views/pagination.html"></div>
+						</td>
+					</table>
+				</div>
 			</div>
+
 		</div>
-
 	</div>
 
 	<!-- <footer ng-if="showFormatted">hello</footer> -->
