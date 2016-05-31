@@ -1,5 +1,12 @@
 <html>
 <body>
+
+
+<br>
+<h2>File Upload <a href="/Test/fileUploadPage">CLick here </a></h2>
+<br>
+
+
 <h2>Enter your details with angular :: <a href="/Test/detailsPage">CLick here </a></h2>
 <br>
 <h2>Enter your details with sprimg mvc :: <a href="/Test/springForm">CLick here </a></h2><br>
@@ -13,6 +20,8 @@
 <br>
 <h2>Hibernate form <a href="/Test/universityForm">CLick here </a></h2>
 <br>
+
+
 <form action="/Test/login" method="post">
 Name <input type="text" name="name"  /><br>
 Age <input type="text" name="age"  /><br>

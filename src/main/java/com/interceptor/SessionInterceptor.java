@@ -32,8 +32,9 @@ public class SessionInterceptor extends HandlerInterceptorAdapter{
 		}else{
 			HttpSession session = request.getSession(false);
 			if (session == null || (session!=null && (session.getAttribute("status")==null))) {
-				response.sendRedirect("/Test/invalidSession");
-				return false;
+				/* to enable cors*/
+			/*	response.sendRedirect("/Test/invalidSession");
+				return false;*/
 			}
 		}
 		return true;

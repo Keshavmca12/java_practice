@@ -2,18 +2,17 @@ package com.controller;
 
 import java.io.IOException;
 import java.util.List;
-
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.dao.CollegeDao;
 import com.dao.CollegeDaoImpl;
 import com.dao.UniversityDao;
@@ -41,11 +40,21 @@ public class HibernateController {
 		return "collegeForm";
 	}
 
-	@RequestMapping(value = "/submitUniDetails", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/submitUniDetails", method = RequestMethod.POST)
 	public   @ResponseBody String  submitUniversityDetails(@RequestParam("data") String data) {
 		System.out.println("submitUniDetails   data :"+data);
 		Gson gson= new Gson();
 		University university=gson.fromJson(data, University.class);
+		System.out.println("university name"+university.getName());
+		universityDao.addUniversity(university);
+		return "success";
+	}*/
+	
+	@RequestMapping(value = "/submitUniDetails", method = RequestMethod.POST)
+	public   @ResponseBody String  submitUniversityDetails(@RequestBody University university) {
+		System.out.println("submitUniDetails   data :"+university);
+		/*Gson gson= new Gson();
+		University university=gson.fromJson(data, University.class);*/
 		System.out.println("university name"+university.getName());
 		universityDao.addUniversity(university);
 		return "success";
@@ -71,6 +80,7 @@ public class HibernateController {
 		String json = null;
 		try {
 			json = obj.writeValueAsString(list);
+			System.out.println("json   : "+json);
 		} catch (JsonGenerationException e) {
 			// TODO Auto-generated catch block
 			System.out.println("exp"+e);

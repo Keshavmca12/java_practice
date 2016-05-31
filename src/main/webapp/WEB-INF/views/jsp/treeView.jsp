@@ -53,7 +53,7 @@
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-	<script type="text/javascript" src="resources/lib/angular.treeview.js"></script>
+	<script type="text/javascript" src="resources/lib/angular.treeview.checkbox.js"></script>
 	<script type="text/javascript" src="resources/js/TreeViewCtrl.js"></script>
 </body>
 </html>

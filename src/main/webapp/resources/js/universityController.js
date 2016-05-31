@@ -11,7 +11,7 @@ $scope.submitUniversityDetails=function(data){
 	$http({
 		url:'/Test/submitUniDetails', 
 		method: "post",
-		params: {data: data}
+		data: data
 	}).then(function(response){
 		console.log("reponse",response.data);
 		$scope.university={};
@@ -40,7 +40,7 @@ var getUniversityList=function(){
 		url:'/Test/universityList', 
 		method: "get"
 	}).then(function(response){
-		console.log("reponse",response.data);
+		console.log("universityList response",response.data);
 		$scope.universityList=response.data;
 	});;
 };

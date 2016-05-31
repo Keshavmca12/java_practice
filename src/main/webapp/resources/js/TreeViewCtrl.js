@@ -4,16 +4,18 @@ treeViewApp.controller("TreeViewCtrl",function($scope,$http){
 	
   	//test tree model 1
     $scope.roleList1 = [
-        { "roleName" : "University 1", "roleId" : "role1","collapsed" : true, "children" : [
-          { "roleName" : "College 1", "roleId" : "role11", "children" : [] },
-          { "roleName" : "College 2", "roleId" : "role12", "children" : []}
+        { "roleName" : "University 11", "roleId" : "role1","collapsed" : false,"checked":false, "children" : [
+          { "roleName" : "College 11", "roleId" : "role11","checked":false,"children" : [{ "roleName" : "College 111", "roleId" : "role11","checked":false},
+          { "roleName" : "College 112", "roleId" : "role12","checked":false}]},{ "roleName" : "College 12", "roleId" : "role12","checked":false,
+        	  "children" : [{ "roleName" : "College 122", "roleId" : "role11","checked":false},
+        	                { "roleName" : "College 1222", "roleId" : "role12","checked":false,"children" : [{ "roleName" : "College 222", "roleId" : "role11","checked":false}]}]}
         ]},
-        { "roleName" : "University 2", "roleId" : "role2", "children" : [
-        { "roleName" : "College 3", "roleId" : "role11", "children" : [] },
-        { "roleName" : "College 4", "roleId" : "role12", "children" : []}
+        { "roleName" : "University 2", "roleId" : "role2","checked":false, "children" : [
+        { "roleName" : "College 3", "roleId" : "role11", "checked":false},
+        { "roleName" : "College 4", "roleId" : "role12", "checked":false}
          ]},
 
-        { "roleName" : "University 3", "roleId" : "role3", "children" : [] }
+        { "roleName" : "University 3", "roleId" : "role3", "checked":false }
       ];
 
   	//test tree model 2
@@ -48,13 +50,14 @@ treeViewApp.controller("TreeViewCtrl",function($scope,$http){
           ]}
         ]}*/
       ];
+   
     
     var getUniversityList=function(){
     	$http({
     		url:'/Test/universityList', 
     		method: "get"
     	}).then(function(response){
-    		console.log("reponse",response.data);
+    		console.log(" universityList reponse ",response.data);
     		$scope.universityList =response.data;
     	});;
     };

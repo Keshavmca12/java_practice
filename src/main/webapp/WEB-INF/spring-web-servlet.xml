@@ -29,6 +29,16 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
+	
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+		 <!-- setting maximum upload size -->
+		<property name="maxUploadSize" value="100000" />
+
+	</bean>
+	
+	
 	<mvc:default-servlet-handler />
 
 	<mvc:resources mapping="/resources/**" location="/resources/" />
@@ -45,7 +55,7 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="org.postgresql.Driver" />
-		<property name="url" value="jdbc:postgresql://localhost:5433/eOffice_ID2" />
+		<property name="url" value="jdbc:postgresql://localhost:5433/tutorApp" />
 		<property name="username" value="postgres" />
 		<property name="password" value="postgres" />
 	</bean>
@@ -82,5 +92,5 @@
 		<aop:advisor pointcut="execution(* com.dao)"
 			advice-ref="txAdvice" />
 	</aop:config> -->
-
+	<!-- Record management System is used to archive files  -->
 </beans>

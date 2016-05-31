@@ -10,7 +10,7 @@
 <body ng-controller="universityController">
 <div class="container">
 <h1>University details</h1><br>
-  <form role="form">
+  <!-- <form role="form"> -->
     <div class="form-group">
       <label for="usr">Name:</label>
       <input type="text" class="form-control" id="usr" ng-model="university.name" required>
@@ -20,7 +20,7 @@
       <input type="text" class="form-control" id="pwd" ng-model="university.location" required>
     </div>
      <button class="btn btn-primary" ng-click="submitUniversityDetails(university)">Submit</button>
-  </form>
+  <!-- </form> -->
 </div>
 
 <button ng-click="showCollegeForm()" class="btn btn-primary">Add college</button>
