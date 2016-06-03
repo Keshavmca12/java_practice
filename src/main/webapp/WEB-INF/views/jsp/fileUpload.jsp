@@ -1,24 +1,28 @@
 <html ng-app="fileUploadApp">
 <head>
-<title>Upload Multiple File Request Page</title>
-
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<title>Upload File Request Page</title>
 </head>
-<body>
-	<!-- <form method="POST" id="uploadFile" action="upload"
-		enctype="multipart/form-data">
-		<input type="file" id="file" name="file" value="upload"> 
-				<input type="submit" value="Upload"> 
-	</form> -->
+<body ng-controller="AppCtrl">
+	 <upload-document action-url="upload"></upload-document><br>
 	
-	<file-upload url="upload"></file-upload>
-
-	<script type="text/javascript">
-	/* document.getElementById("file").onchange = function() {
-	    document.getElementById("uploadFile").submit();
-	}; */
-	</script>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-		<script type="text/javascript" src="resources/js/fileUploadApp.js"></script>
+	
+	<strong>Uploaded Document</strong><br>
+	
+	<show-document document-url="/Test/viewPDF?pdfPath=C:\Program Files (x86)\Apache Software Foundation\Tomcat 7.0\tmpFiles\eRMS_ERdiagram231015.pdf"></show-document>
+	
+	 <show-pop-up page-url="/Test/popUpContent"></show-pop-up>
+	 
+	 
+	 <strong ng-click="openPopup('one')">Pop up one </strong><br>
+	 
+	 <strong ng-click="openPopup('two')">Pop up two</strong><br>
+	 
+	<!-- <script type="text/javascript" src="resources/lib/jquery-1.10.2.min.js"></script>-->
+	<!-- <script
+		src="resources/lib/angular.js"></script> -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
+	<script type="text/javascript" src="resources/js/fileUploadApp.js"></script>
 </body>
 </html>
