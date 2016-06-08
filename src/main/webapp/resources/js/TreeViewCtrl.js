@@ -53,6 +53,15 @@ treeViewApp.controller("TreeViewCtrl",function($scope,$http){
    
     
     var getUniversityList=function(){
+    	
+    	$http({
+    		url:'/Test/userTree', 
+    		method: "GET"
+    		}).then(function(response){
+    		console.log("userTree reponse",response.data);
+    		$scope.userTree=response.data;	
+    	});;
+    	
     	$http({
     		url:'/Test/universityList', 
     		method: "get"

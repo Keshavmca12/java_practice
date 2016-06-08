@@ -45,7 +45,7 @@
      <div
       data-angular-treeview="true"
       data-tree-id="tree"
-      data-tree-model="universityList"
+      data-tree-model="userTree"
       data-node-id="id"
       data-node-label="name"
       data-node-children="children" >

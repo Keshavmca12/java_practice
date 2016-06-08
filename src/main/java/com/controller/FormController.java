@@ -4,11 +4,13 @@ import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dto.Product;
 import com.google.gson.Gson;
 import com.service.LocationService;
 
@@ -22,6 +24,22 @@ public class FormController {
 		System.out.println("serving details page");
 		return "form";
 	}
+	
+	@RequestMapping(value = "/ckEditor", method = RequestMethod.GET)
+	public String getCkEditor() {
+		System.out.println("serving CkEditor page");
+		return "ckEditorForm";
+	}
+	
+	@RequestMapping(value="/submitProdDetails",method=RequestMethod.POST)
+	public @ResponseBody Product submitProdDetails(@RequestBody Product product) {
+		System.out.println("inside submitProdDetails"+product.getName());
+		
+		
+		return product;
+	}
+	
+	
 	@RequestMapping(value="/getBasic",method=RequestMethod.GET)
 	public @ResponseBody String getBasicDetails() {
 		System.out.println("inside getBasicDetails");
@@ -65,7 +83,21 @@ public class FormController {
 			e.printStackTrace();
 		}
 		return "";
-	}
+	};
+	
+	@RequestMapping(value="/userTree",method=RequestMethod.GET)
+	public @ResponseBody Object getUserTree() {
+		Object userTree=null;
+		try {
+			userTree=locationService.getUserTree();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return userTree;
+	};
+	
+	
 
 
 

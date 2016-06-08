@@ -75,6 +75,11 @@
 				hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 			</value>
 		</property>
+		<property name="packagesToScan">
+			<list>
+				<value>com.modal</value>
+			</list>
+		</property>
 	</bean>
 
 	<!-- <bean id="universityDaoImpl" class="com.dao.UniversityDaoImpl">

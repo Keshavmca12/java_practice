@@ -20,12 +20,20 @@ fileUploadApp.service('popUpService', function($uibModal){
 	
 });
 
-fileUploadApp.controller('AppCtrl', function ($scope, $uibModal,popUpService) {
+fileUploadApp.controller('AppCtrl', function ($scope, $uibModal,popUpService,$http) {
 	console.log("$uibModal controller",$uibModal);
 	$scope.openPopup=function(flag){
 		console.log("flag",flag);
 		popUpService.openPopup(flag);
 	};
+	
+	$http({
+		url:'/Test/userTree', 
+		method: "GET"
+		}).then(function(response){
+		console.log("userTree reponse",response.data);
+		$scope.userTree=response.data;	
+	});;
 });
 
 

@@ -11,6 +11,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.modal.User;
 import com.repository.LocationRepository;
 
 @Service
@@ -18,6 +19,52 @@ public class LocationService {
 
 	@Autowired
 	private LocationRepository locationRepository;
+	
+	/*** $scope.roleList1 = [
+        { "roleName" : "University 11", "roleId" : "role1","collapsed" : false,"checked":false, "children" : [
+          { "roleName" : "College 11", "roleId" : "role11","checked":false,"children" : [{ "roleName" : "College 111", "roleId" : "role11","checked":false},
+          { "roleName" : "College 112", "roleId" : "role12","checked":false}]},{ "roleName" : "College 12", "roleId" : "role12","checked":false,
+        	  "children" : [{ "roleName" : "College 122", "roleId" : "role11","checked":false},
+        	                { "roleName" : "College 1222", "roleId" : "role12","checked":false,"children" : [{ "roleName" : "College 222", "roleId" : "role11","checked":false}]}]}
+        ]},
+        { "roleName" : "University 2", "roleId" : "role2","checked":false, "children" : [
+        { "roleName" : "College 3", "roleId" : "role11", "checked":false},
+        { "roleName" : "College 4", "roleId" : "role12", "checked":false}
+         ]},
+
+        { "roleName" : "University 3", "roleId" : "role3", "checked":false }
+      ];
+
+**/
+
+	public Object getUserTree(){
+		List<User> userList=locationRepository.getUserList();
+		System.out.println("user list "+userList.get(0));
+		for(Object obj:userList){
+			List<Object> childrenList=new ArrayList<Object>();
+			HashMap<String,Object>hm= new HashMap<String, Object>();
+			hm.put("name","role");
+			hm.put("id", "roleId");
+			hm.put("children",locationRepository.getRoleList());
+			childrenList.add(hm);
+			HashMap<String,Object>uniMap= new HashMap<String, Object>();
+			uniMap.put("name","sex");
+			uniMap.put("id", "sexId");
+			uniMap.put("children",locationRepository.getList());
+			childrenList.add(uniMap);
+			System.out.println("children list  "+childrenList);
+			System.out.println(obj.getClass().getSimpleName());
+			User usr=(User)obj;
+			usr.setChildren(childrenList);
+		}
+		
+		System.out.println("userList  :: "+userList);
+		
+		return userList;
+	}
+
+
+
 	public HashMap<String, HashMap<String, String>> getBasicLocationDetails(){
 		HashMap<String, HashMap<String, String>> basicDetails=new HashMap<String, HashMap<String, String>>();
 		Connection c = null;

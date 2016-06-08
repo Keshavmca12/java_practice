@@ -5,7 +5,8 @@
 <br>
 <h2>File Upload <a href="/Test/fileUploadPage">CLick here </a></h2>
 <br>
-
+<h2>File Upload <a href="/Test/ckEditor">Ck editor </a></h2>
+<br>
 
 <h2>Enter your details with angular :: <a href="/Test/detailsPage">CLick here </a></h2>
 <br>
