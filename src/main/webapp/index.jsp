@@ -7,6 +7,8 @@
 <br>
 <h2>File Upload <a href="/Test/ckEditor">Ck editor </a></h2>
 <br>
+<h2>Tiny mce latest 4.5.6 <a href="/Test/tinyMCE4">Ck editor </a></h2>
+<br>
 
 <h2>Enter your details with angular :: <a href="/Test/detailsPage">CLick here </a></h2>
 <br>
